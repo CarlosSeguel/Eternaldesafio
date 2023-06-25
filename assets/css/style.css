@@ -9,6 +9,7 @@ body{
     "nav"
     "header"
     "main"
+    "scroll"
     "footer";
     grid-template-columns: repeat(auto-fit, minmax(375px, 4fr));
 }
@@ -32,7 +33,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: end;
+    width: 50%;
 }
 .nav_label{
     display: flex;
@@ -86,19 +88,28 @@ body{
 }
 .main{
     grid-area: main;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: scroll;
 }
-.card{
-    margin: 2vh;
+.carousel {
+    display: flex;
     width: max-content;
+    transition: transform 0.5s ease-in-out;
+}
+.card {
+    margin: 1vh 6vh 1vh 6vh;
 }
 .card-body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.scroll{
+    grid-area: scroll;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
 }
 .footer{
     grid-area: footer;
@@ -114,11 +125,12 @@ body{
 @media (min-width: 576px) {
     .grid-container{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 3fr;
         grid-template-areas: 
-        "navbar navbar navbar"
-        "header main main"
-        "footer footer footer";
+        "navbar navbar navbar navbar"
+        "header main main main"
+        "header scroll scroll scroll"
+        "footer footer footer footer";
     }
     .nav{
         grid-area: navbar;
@@ -128,6 +140,36 @@ body{
     }
     .main{
         grid-area: main;
+        padding-top: 5vh;
+    }
+    .card {
+        margin: 0vh 2vh 1vh 0vh;
+    }
+    .footer{
+        grid-area: footer;
+    }
+}
+@media (min-width: 992px) {
+    .grid-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas: 
+        "navbar navbar navbar navbar"
+        "header main main main"
+        "header scroll scroll scroll"
+        "footer footer footer footer";
+    }
+    .nav{
+        grid-area: navbar;
+    }
+    .header{
+        grid-area: header;
+    }
+    .main{
+        grid-area: main;
+    }
+    .card {
+        margin: 0vh 2vh 1vh 0vh;
     }
     .footer{
         grid-area: footer;
